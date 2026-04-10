@@ -34,12 +34,6 @@ const REVEAL_CONTENT = [
   },
 ];
 
-const ROLES = [
-  { text: "LEADER", color: "#d92323", bg: "rgba(217,35,35,0.12)", border: "rgba(217,35,35,0.5)" },
-  { text: "PARTY",  color: "#d92323", bg: "rgba(217,35,35,0.12)", border: "rgba(217,35,35,0.5)" },
-  { text: "PARTY",  color: "#d92323", bg: "rgba(217,35,35,0.12)", border: "rgba(217,35,35,0.5)" },
-];
-
 const ITEMS = [
   {
     id: "about", label: "ABOUT ME", handle: "@ffaneto", href: "https://github.com/ffaneto", icon: "👤", barIcon: icon1, bars: 1, newBars: [0], counts: ["16"],
@@ -624,7 +618,6 @@ export default function AboutMe() {
               <div className="sc-bar-fill" />
               <div className="sc-bar-shade" />
               <div className="sc-bar-content">
-                <div className="sc-role">{ROLES[i].text}</div>
                 <div className="sc-main">
                   <div className="sc-main-top">
                     <div className="sc-label">{item.label}</div>

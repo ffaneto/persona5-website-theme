@@ -132,11 +132,11 @@ export default function P3Menu({ onNavigate }) {
         }
 
         @keyframes p3-wiggle-poly {
-          0%   { clip-path: polygon(0% 44%, 24% 6%, 82% 0%, 100% 36%, 82% 100%, 18% 94%); }
-          25%  { clip-path: polygon(0% 48%, 22% 4%, 84% 2%, 100% 32%, 80% 100%, 16% 96%); }
-          50%  { clip-path: polygon(0% 40%, 27% 8%, 80% 0%, 100% 40%, 84% 98%, 21% 92%); }
-          75%  { clip-path: polygon(0% 46%, 23% 7%, 83% 1%, 100% 35%, 81% 100%, 17% 95%); }
-          100% { clip-path: polygon(0% 44%, 24% 6%, 82% 0%, 100% 36%, 82% 100%, 18% 94%); }
+          0%   { clip-path: polygon(0% 56%, 16% 0%, 76% 7%, 100% 24%, 94% 100%, 8% 88%); }
+          25%  { clip-path: polygon(0% 62%, 12% 6%, 84% 0%, 100% 34%, 88% 100%, 2% 94%); }
+          50%  { clip-path: polygon(0% 40%, 28% 10%, 72% 0%, 100% 44%, 98% 92%, 14% 100%); }
+          75%  { clip-path: polygon(0% 52%, 22% 0%, 80% 12%, 100% 28%, 90% 100%, 6% 82%); }
+          100% { clip-path: polygon(0% 56%, 16% 0%, 76% 7%, 100% 24%, 94% 100%, 8% 88%); }
         }
 
         .p3-shadow-tri {
@@ -163,7 +163,7 @@ export default function P3Menu({ onNavigate }) {
           pointer-events: none;
         }
         .p3-row.active .p3-highlight {
-          animation: p3-wiggle-poly 0.56s ease-in-out infinite;
+          animation: p3-wiggle-poly 0.66s ease-in-out infinite;
         }
 
         .p3-label-wrap {
