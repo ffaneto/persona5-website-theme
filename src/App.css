@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0d0d0d;
+  overflow: hidden;
+  font-family: 'Persona5Main';
+}
+
+.site-bg-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.site-content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+#menu-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#menu-screen video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#main {
+  width: 100vw;
+  height: 100vh;
+}
+
+.bgm-panel {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 0; 
+  background: rgba(13,13,13,0.82);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 10px;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  backdrop-filter: blur(2px);
+  transition: gap 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bgm-panel:hover,
+.bgm-panel:focus-within {
+  gap: 10px; 
+}
+
+.bgm-toggle {
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(13,13,13,0.86);
+  color: #ffffff;
+  padding: 8px 10px;
+  min-width: 84px;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  font-weight: 700;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.bgm-toggle:hover {
+  transform: translateY(-1px);
+}
+
+.bgm-toggle.on {
+  background: rgba(217,35,35,0.94);
+  color: #ffffff;
+}
+
+.bgm-slider {
+  width: 100%;
+  accent-color: #d92323;
+  cursor: pointer;
+}
+
+.bgm-slider-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(13,13,13,0.8);
+  clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+  
+  max-width: 0;
+  padding: 0;
+  border-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bgm-panel:hover .bgm-slider-wrap,
+.bgm-panel:focus-within .bgm-slider-wrap {
+  max-width: 200px;
+  padding: 6px 8px;
+  border-width: 1px;
+  opacity: 1;
+}
