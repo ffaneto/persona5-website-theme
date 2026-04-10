@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { playSelectSound } from "./utils/audio.js";
 import { useNavigate } from "react-router-dom";
 import mainVideo from "./assets/main1.mp4";
 
@@ -20,6 +21,15 @@ export default function ResumePage() {
   const navigate = useNavigate();
   const [active, setActive] = useState(1);
   const [mounted, setMounted] = useState(false);
+  const isFirstRenderAudio = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRenderAudio.current) {
+      isFirstRenderAudio.current = false;
+      return;
+    }
+    playSelectSound();
+  }, [active]);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);

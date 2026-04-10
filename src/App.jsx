@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import P3Menu from './P3Menu'
+import P5Menu from './P5Menu'
 import ResumePage from './ResumePage'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
@@ -10,8 +10,8 @@ import SideProjectsPage from './SideProjectsPage'
 import mainVideo from './assets/main1.mp4'
 import './App.css'
 
-const BGM_STATE_KEY = 'p3-bgm-enabled'
-const BGM_VOLUME_KEY = 'p3-bgm-volume'
+const BGM_STATE_KEY = 'p5-bgm-enabled'
+const BGM_VOLUME_KEY = 'p5-bgm-volume'
 const DEFAULT_VOLUME = 0.45
 const FADE_MS = 450
 
@@ -185,7 +185,7 @@ function MenuScreen() {
   return (
     <div id="menu-screen">
       {/* <video src={menuVideo} autoPlay loop muted playsInline /> */}
-      <P3Menu onNavigate={handleNavigate} />
+      <P5Menu onNavigate={handleNavigate} />
     </div>
   )
 }

@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { playSelectSound } from "./utils/audio.js";
 import { useNavigate } from "react-router-dom";
 import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
@@ -18,8 +19,8 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "github", label: "GITHUB", handle: "@ffaneto", href: "https://github.com/ffaneto?tab=repositories", icon: "💻", barIcon: icon1, bars: 5, newBars: [0], counts: ["SALES", "CALC", "EXERCS", "NELIO", "MORE"],
-    links: ["github.com/ffaneto/gestao-vendas-3-info-vesp-1.0", "github.com/ffaneto/calculadora-arranjo-combinacao-permutacao-java", "github.com/ffaneto/questoes-funcoes-javascript", "github.com/ffaneto/curso-nelio-alves", "github.com/ffaneto/outras-questoes-nelio-alves"],
+    id: "github", label: "GITHUB", handle: "@ffaneto", href: "https://github.com/ffaneto?tab=repositories", icon: "💻", barIcon: icon1, bars: 5, newBars: [0], counts: ["SALES", "SITE","CALC", "EXERCS", "NELIO", "MORE"],
+    links: ["github.com/ffaneto/gestao-vendas-3-info-vesp-1.0","github.com/ffaneto/persona5-website", "github.com/ffaneto/calculadora-arranjo-combinacao-permutacao-java", "github.com/ffaneto/questoes-funcoes-javascript", "github.com/ffaneto/curso-nelio-alves", "github.com/ffaneto/outras-questoes-nelio-alves"],
     stats: [
       { tag: "USR", value: "ffaneto", color: "#7b7b7b" },
       { tag: "TOP", value: "PROJECTS",  color: "#7b7b7b" },
@@ -46,6 +47,7 @@ const ITEMS = [
 export default function Socials() {
   const [active, setActive]               = useState(0);
   const [mounted, setMounted]             = useState(false);
+  const isFirstRenderAudio = useRef(true);
   const [activeInfoBar, setActiveInfoBar] = useState(0);
   const [focus, setFocus]                 = useState("left"); // "left" | "right"
   const navigate = useNavigate();
@@ -54,6 +56,14 @@ export default function Socials() {
     const t = setTimeout(() => setMounted(true), 60);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    if (isFirstRenderAudio.current) {
+      isFirstRenderAudio.current = false;
+      return;
+    }
+    playSelectSound();
+  }, [active, activeInfoBar, focus]);
 
   useEffect(() => {
     const onKey = (e) => {

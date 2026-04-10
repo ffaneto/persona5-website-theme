@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
+import { playSelectSound } from "./utils/audio.js";
 
 function DefaultTransition() {
   const stripes = [
@@ -148,15 +149,11 @@ export default function PageTransition({ children, variant = "default" }) {
   const selectSoundRef = useRef(null);
 
   useEffect(() => {
-    if (selectSoundRef.current) {
-      selectSoundRef.current.currentTime = 0;
-      selectSoundRef.current.play().catch(() => {});
-    }
+    playSelectSound();
   }, [location.pathname]);
 
   return (
     <>
-      <audio ref={selectSoundRef} src="/audio/select.mp3" preload="auto" />
       <AnimatePresence mode="wait">
         <motion.div key={location.pathname} style={{ position: "relative" }}>
           <TransitionOverlay variant={variant} />

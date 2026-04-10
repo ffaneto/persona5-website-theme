@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { playSelectSound } from "./utils/audio.js";
 import { useNavigate } from "react-router-dom";
 
 const ITEMS = [
@@ -8,6 +9,13 @@ const ITEMS = [
     stack: "Java",
     summary: "Sales management system.",
     href: "https://github.com/ffaneto/gestao-vendas-3-info-vesp-1.0",
+  },
+  {
+    id: "persona5-website",
+    title: "PERSONA 5 WEBSITE",
+    stack: "React",
+    summary: "A website for the game Persona 5.",
+    href: "https://github.com/ffaneto/persona5-website",
   },
   {
     id: "calculadora-arranjo",
@@ -37,12 +45,22 @@ const ITEMS = [
     summary: "More solved exercises from Nelio Alves's course.",
     href: "https://github.com/ffaneto/outras-questoes-nelio-alves",
   }
+
 ];
 
 export default function SideProjectsPage() {
   const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const isFirstRenderAudio = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRenderAudio.current) {
+      isFirstRenderAudio.current = false;
+      return;
+    }
+    playSelectSound();
+  }, [active]);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);

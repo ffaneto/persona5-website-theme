@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { playSelectSound } from "./utils/audio.js";
 import { useNavigate } from "react-router-dom";
 import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
@@ -64,6 +65,7 @@ const ITEMS = [
 export default function AboutMe() {
   const [active, setActive]   = useState(0);
   const [mounted, setMounted] = useState(false);
+  const isFirstRenderAudio = useRef(true);
   const [revealed, setRevealed] = useState(false);
   const navigate = useNavigate();
 
@@ -71,6 +73,14 @@ export default function AboutMe() {
     const t = setTimeout(() => setMounted(true), 60);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    if (isFirstRenderAudio.current) {
+      isFirstRenderAudio.current = false;
+      return;
+    }
+    playSelectSound();
+  }, [active]);
 
   useEffect(() => {
     const onKey = (e) => {
